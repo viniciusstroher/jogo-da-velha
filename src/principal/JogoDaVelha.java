@@ -143,19 +143,18 @@ public class JogoDaVelha {
 	public boolean realizaJogada(int x, int y, char jogada) {
 		//valores proibidos maior que a dimensao
 		//e menor que zero 
-		if(x > 0 || y > 0 || x < this.dimensao-1 || y < this.dimensao-1) {
+		if(x < 0 || y < 0 || x > this.dimensao-1 || y > this.dimensao-1) {
 			return false;
 		}
 		
 		//varifica se ja fizeram a jogada
 		if(this.tabuleiro[x][y] == 0) {
-			return false;
+			//registra a jogada
+			this.tabuleiro[x][y] = jogada; //X ou O
+			return true;
 		}
-		
-		//registra a jogada
-		this.tabuleiro[x][y] = jogada; //X ou O
-		
-		return true;
+
+		return false;
 	}
 	
 	public String toString() {

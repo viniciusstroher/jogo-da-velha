@@ -29,26 +29,37 @@ public class Main {
 		do {
 			//laço para jogar até ser vencedor
 			do {
-				System.out.println(jogador1.getNome() + " faça sua jogada x:");
-				jogadaX = keyboard.nextInt();
 				
-				System.out.println(jogador1.getNome() + " faça sua jogada y:");
-				jogadaY = keyboard.nextInt();
+				//verifica jogada se esta ok
+				do {
+					System.out.println(jogador1.getNome() + " faça sua jogada x:");
+					jogadaX = keyboard.nextInt();
+					
+					System.out.println(jogador1.getNome() + " faça sua jogada y:");
+					jogadaY = keyboard.nextInt();
+				}while(!jogo.realizaJogada(jogadaX, jogadaY, 'X'));
 				
-				jogo.realizaJogada(jogadaX, jogadaY, 'X');
+				do {
+					System.out.println(jogador2.getNome() + " faça sua jogada x:");
+					jogadaX = keyboard.nextInt();
+					
+					System.out.println(jogador2.getNome() + " faça sua jogada y:");
+					jogadaY = keyboard.nextInt();
+				}while(!jogo.realizaJogada(jogadaX, jogadaY, 'O'));
 				
-				System.out.println(jogador2.getNome() + " faça sua jogada x:");
-				jogadaX = keyboard.nextInt();
+				System.out.println();
+				System.out.print(jogo.toString());
+				System.out.println();
 				
-				System.out.println(jogador2.getNome() + " faça sua jogada y:");
-				jogadaY = keyboard.nextInt();
-				
-				jogo.realizaJogada(jogadaX, jogadaY, 'O');
+				//da pontos ao jogador.
 				
 			}while(!jogo.verificaGanhador());
 			
 			System.out.println("Deseja jogar novamente?");
 			respostaFinal = keyboard.next();
+			
+			keyboard.nextLine();
+			
 		}while(respostaFinal.equals("s"));
 		
 		//mostra ganhador
@@ -57,7 +68,6 @@ public class Main {
 		}else {
 			System.out.println(jogador2.getNome()+" fez "+jogador2.getPontos()+", parabens voce ganhou!");
 		}
-		
 		
 	}
 
