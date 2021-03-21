@@ -28,7 +28,7 @@ public class Main {
 		//laço para jogar outro jogo
 		do {
 			//laço para jogar até ser vencedor
-			
+			boolean ganhador = false;
 			char jogada;
 			int numeroMaximoJogadas = 0; //caso não houver vencedor
 			do {
@@ -42,18 +42,20 @@ public class Main {
 					
 					System.out.println(jogador1.getNome() + " faça sua jogada y:");
 					jogadaY = keyboard.nextInt();
-					
-					jogadaRealizada = jogo.realizaJogada(jogadaX, jogadaY, jogada);
-					
-					System.out.println();
-					System.out.println();
-					System.out.print(jogo.toString());
-					System.out.println();
-					System.out.println();
-					
-				}while(!jogadaRealizada);
+						
+				}while(!jogo.realizaJogada(jogadaX, jogadaY, jogada));
 				
-				jogadaRealizada = false;
+				System.out.println();
+				System.out.println();
+				System.out.print(jogo.toString());
+				System.out.println();
+				System.out.println();
+				
+				//verifica se o jogador 1
+				ganhador = jogo.verificaGanhador();
+				if(ganhador) {
+					break;
+				}
 				
 				do {
 					jogada = '0';
@@ -64,20 +66,21 @@ public class Main {
 					System.out.println(jogador2.getNome() + " faça sua jogada y:");
 					jogadaY = keyboard.nextInt();
 					
-					jogadaRealizada = jogo.realizaJogada(jogadaX, jogadaY, jogada);
-					
-					System.out.println();
-					System.out.println();
-					System.out.print(jogo.toString());
-					System.out.println();
-					System.out.println();
-					
-				}while(!jogadaRealizada);
+				}while(!jogo.realizaJogada(jogadaX, jogadaY, jogada));
+				
+				System.out.println();
+				System.out.println();
+				System.out.print(jogo.toString());
+				System.out.println();
+				System.out.println();
+				
+				//verifica se o jogador 2
+				ganhador = jogo.verificaGanhador();
 				
 				//2 jogadas por laço
 				numeroMaximoJogadas +=2;
 				
-			}while(!jogo.verificaGanhador() /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
+			}while(!ganhador /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
 			
 			switch (jogada) {
 				case 'X': {
