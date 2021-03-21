@@ -21,42 +21,29 @@ public class JogoDaVelha {
 		this.tabuleiro = new char[this.dimensao][this.dimensao];
 	}
 	
-	public boolean verificaGanhador() {
+	public boolean verificaGanhador(char jogada) {
 		boolean ganhador = false;
 		
-		boolean ganhadorVerticalX = false;
-		ganhadorVerticalX = verificaVertical('X');
-		if(ganhadorVerticalX) {
+		boolean ganhadorVertical = false;
+		ganhadorVertical = verificaVertical(jogada);
+		if(ganhadorVertical) {
 			return true;
 		}
-		
-		boolean ganhadorVerticalO = false;
-		ganhadorVerticalO = verificaVertical('O');
-		if(ganhadorVerticalO) {
-			return true;
-		}
-		
-		
-		boolean ganhadorHorizontalX = false;
-		ganhadorHorizontalX = verificaHorizontal('X');
-		if(ganhadorHorizontalX) {
+
+		boolean ganhadorHorizontal = false;
+		ganhadorHorizontal = verificaHorizontal(jogada);
+		if(ganhadorHorizontal) {
 			return true;
 		}
 		
 		boolean ganhadorHorizontalO = false;
-		ganhadorHorizontalO = verificaHorizontal('O');
+		ganhadorHorizontalO = verificaHorizontal(jogada);
 		if(ganhadorHorizontalO) {
 			return true;
 		}
-		
-		boolean ganhadorDiagonalX = false;
-		ganhadorDiagonalX = verificaDiagonal('X');
-		if(ganhadorDiagonalX) {
-			return true;
-		}
-		
+
 		boolean ganhadorDiagonalO = false;
-		ganhadorDiagonalO = verificaDiagonal('O');
+		ganhadorDiagonalO = verificaDiagonal(jogada);
 		if(ganhadorDiagonalO) {
 			return true;
 		}

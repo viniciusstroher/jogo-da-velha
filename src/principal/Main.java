@@ -27,6 +27,7 @@ public class Main {
 		
 		//laço para jogar outro jogo
 		do {
+			jogo.criaTabuleiro();
 			//laço para jogar até ser vencedor
 			boolean ganhador = false;
 			char jogada;
@@ -52,7 +53,7 @@ public class Main {
 				System.out.println();
 				
 				//verifica se o jogador 1
-				ganhador = jogo.verificaGanhador();
+				ganhador = jogo.verificaGanhador(jogada);
 				if(ganhador) {
 					System.out.println(jogador1.getNome()+" ganhou a rodada");
 					jogador1.setPontos(jogador1.getPontos()+1);
@@ -77,7 +78,7 @@ public class Main {
 				System.out.println();
 				
 				//verifica se o jogador 2
-				ganhador = jogo.verificaGanhador();
+				ganhador = jogo.verificaGanhador(jogada);
 				if(ganhador) {
 					System.out.println(jogador2.getNome()+" ganhou a rodada");
 					jogador2.setPontos(jogador2.getPontos()+1);
@@ -87,7 +88,7 @@ public class Main {
 				numeroMaximoJogadas +=2;
 				
 			}while(!ganhador /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
-		
+			
 			System.out.println("Deseja jogar novamente (s)?");
 			respostaFinal = keyboard.next();
 			
