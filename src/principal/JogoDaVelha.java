@@ -14,6 +14,10 @@ public class JogoDaVelha {
 		this.dimensao = dimensao;
 		
 		//inicia tabuleiro
+		this.criaTabuleiro();
+	}
+	
+	public void criaTabuleiro() {
 		this.tabuleiro = new char[this.dimensao][this.dimensao];
 	}
 	

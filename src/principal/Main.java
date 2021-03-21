@@ -54,6 +54,8 @@ public class Main {
 				//verifica se o jogador 1
 				ganhador = jogo.verificaGanhador();
 				if(ganhador) {
+					System.out.println(jogador1.getNome()+" ganhou a rodada");
+					jogador1.setPontos(jogador1.getPontos()+1);
 					break;
 				}
 				
@@ -76,23 +78,16 @@ public class Main {
 				
 				//verifica se o jogador 2
 				ganhador = jogo.verificaGanhador();
+				if(ganhador) {
+					System.out.println(jogador2.getNome()+" ganhou a rodada");
+					jogador2.setPontos(jogador2.getPontos()+1);
+				}
 				
 				//2 jogadas por laço
 				numeroMaximoJogadas +=2;
 				
 			}while(!ganhador /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
-			
-			switch (jogada) {
-				case 'X': {
-					System.out.println(jogador1.getNome()+" ganhou a rodada");
-					jogador1.setPontos(jogador1.getPontos()+1);
-				}
-				case 'O': {
-					System.out.println(jogador2.getNome()+" ganhou a rodada");
-					jogador2.setPontos(jogador2.getPontos()+1);
-				}
-			}
-			
+		
 			System.out.println("Deseja jogar novamente (s)?");
 			respostaFinal = keyboard.next();
 			
