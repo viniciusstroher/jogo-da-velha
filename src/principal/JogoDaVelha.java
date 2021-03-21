@@ -65,6 +65,7 @@ public class JogoDaVelha {
 		//é uma vitoria
 		int contador = 0; 
 		
+		//diagonal
 		for(int i = 0; i < this.dimensao ; i++) {
 			if(this.tabuleiro[i][i] == jogada) {
 				contador++;
@@ -79,8 +80,10 @@ public class JogoDaVelha {
 		
 		contador = 0; 
 		
-		for(int i = 0; i < this.dimensao ; i++) {
-			if(this.tabuleiro[i][i] == jogada) {
+		//diagonal oposta
+		int x = 0;
+		for(int i = this.dimensao-1; i >= 0 ; i--) {
+			if(this.tabuleiro[x][i] == jogada) {
 				contador++;
 			}
 			
@@ -89,6 +92,8 @@ public class JogoDaVelha {
 			if(contador == this.dimensao) {
 				return true;
 			}
+			
+			x++;
 		}
 		
 		return false;

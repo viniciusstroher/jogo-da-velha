@@ -28,34 +28,69 @@ public class Main {
 		//laço para jogar outro jogo
 		do {
 			//laço para jogar até ser vencedor
+			
+			char jogada;
+			int numeroMaximoJogadas = 0; //caso não houver vencedor
 			do {
-				
+				boolean jogadaRealizada = false;
 				//verifica jogada se esta ok
 				do {
+					jogada = 'X';
+					
 					System.out.println(jogador1.getNome() + " faça sua jogada x:");
 					jogadaX = keyboard.nextInt();
 					
 					System.out.println(jogador1.getNome() + " faça sua jogada y:");
 					jogadaY = keyboard.nextInt();
-				}while(!jogo.realizaJogada(jogadaX, jogadaY, 'X'));
+					
+					jogadaRealizada = jogo.realizaJogada(jogadaX, jogadaY, jogada);
+					
+					System.out.println();
+					System.out.println();
+					System.out.print(jogo.toString());
+					System.out.println();
+					System.out.println();
+					
+				}while(!jogadaRealizada);
+				
+				jogadaRealizada = false;
 				
 				do {
+					jogada = '0';
+					
 					System.out.println(jogador2.getNome() + " faça sua jogada x:");
 					jogadaX = keyboard.nextInt();
 					
 					System.out.println(jogador2.getNome() + " faça sua jogada y:");
 					jogadaY = keyboard.nextInt();
-				}while(!jogo.realizaJogada(jogadaX, jogadaY, 'O'));
+					
+					jogadaRealizada = jogo.realizaJogada(jogadaX, jogadaY, jogada);
+					
+					System.out.println();
+					System.out.println();
+					System.out.print(jogo.toString());
+					System.out.println();
+					System.out.println();
+					
+				}while(!jogadaRealizada);
 				
-				System.out.println();
-				System.out.print(jogo.toString());
-				System.out.println();
+				//2 jogadas por laço
+				numeroMaximoJogadas +=2;
 				
-				//da pontos ao jogador.
-				
-			}while(!jogo.verificaGanhador());
+			}while(!jogo.verificaGanhador() /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
 			
-			System.out.println("Deseja jogar novamente?");
+			switch (jogada) {
+				case 'X': {
+					System.out.println(jogador1.getNome()+" ganhou a rodada");
+					jogador1.setPontos(jogador1.getPontos()+1);
+				}
+				case 'O': {
+					System.out.println(jogador2.getNome()+" ganhou a rodada");
+					jogador2.setPontos(jogador2.getPontos()+1);
+				}
+			}
+			
+			System.out.println("Deseja jogar novamente (s)?");
 			respostaFinal = keyboard.next();
 			
 			keyboard.nextLine();
@@ -65,8 +100,10 @@ public class Main {
 		//mostra ganhador
 		if(jogador1.getPontos() > jogador2.getPontos()) {
 			System.out.println(jogador1.getNome()+" fez "+jogador1.getPontos()+", parabens voce ganhou!");
-		}else {
+		}else if(jogador1.getPontos() < jogador2.getPontos()) {
 			System.out.println(jogador2.getNome()+" fez "+jogador2.getPontos()+", parabens voce ganhou!");
+		}else {
+			System.out.println("Ninguem ganhou");
 		}
 		
 	}
