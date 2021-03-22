@@ -27,11 +27,14 @@ public class Main {
 		
 		//laço para jogar outro jogo
 		do {
-			jogo.criaTabuleiro();
-			//laço para jogar até ser vencedor
+						
 			boolean ganhador = false;
 			char jogada;
 			int numeroMaximoJogadas = 0; //caso não houver vencedor
+			
+			jogo.criaTabuleiro();
+			
+			//laço para jogar até ser vencedor
 			do {
 				boolean jogadaRealizada = false;
 				//verifica jogada se esta ok
@@ -60,6 +63,16 @@ public class Main {
 					break;
 				}
 				
+				numeroMaximoJogadas++;
+				System.out.println(numeroMaximoJogadas +"/"+ dimensaoTabuleiro*dimensaoTabuleiro + " jogadas");
+				if(numeroMaximoJogadas == dimensaoTabuleiro*dimensaoTabuleiro) {
+					break;
+				}
+
+//				X 0 X  
+//				X 0 0  
+//				0 X X 
+				
 				do {
 					jogada = '0';
 					
@@ -84,10 +97,13 @@ public class Main {
 					jogador2.setPontos(jogador2.getPontos()+1);
 				}
 				
-				//2 jogadas por laço
-				numeroMaximoJogadas +=2;
+				numeroMaximoJogadas++;
+				System.out.println(numeroMaximoJogadas +"/"+ dimensaoTabuleiro*dimensaoTabuleiro + " jogadas");
 				
-			}while(!ganhador /* || numeroMaximoJogadas < dimensaoTabuleiro*2*/);
+				if(numeroMaximoJogadas == dimensaoTabuleiro*dimensaoTabuleiro) {
+					break;
+				}
+			}while(!ganhador);
 			
 			System.out.println("Deseja jogar novamente (s)?");
 			respostaFinal = keyboard.next();
